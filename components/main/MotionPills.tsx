@@ -35,6 +35,9 @@ export const MotionPills = () => {
   className="w-full overflow-hidden"
   style={{ padding: 0, marginTop: '6rem' }}
 >
+   <h2 className="text-white text-2xl font-semibold mb-10 text-center">
+    Top Content Distributors
+  </h2>
       {[...Array(ROWS)].map((_, rowIndex) => {
         const isReverse = rowIndex === 1; // second line scroll opposite
         return (
