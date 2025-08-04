@@ -8,7 +8,7 @@ import { StarsCanvas } from "@/components/main/star-background";
 import { siteConfig } from "@/config";
 import { cn } from "@/lib/utils";
 
-import "./globals.css";
+// import "../globals.css";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,9 +17,13 @@ export const viewport: Viewport = {
   themeColor: "#030014",
 };
 
-export const metadata: Metadata = siteConfig;
+export const metadata: Metadata = {
+  ...siteConfig,
+  title: "Marketplace - " + siteConfig.title,
+  description: "Explore the marketplace on CRE8TAR",
+};
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default function MarketplaceLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body
@@ -30,7 +34,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       >
         <StarsCanvas />
         <Navbar />
-        {children}
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
