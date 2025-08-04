@@ -133,6 +133,5 @@ For best results:
 <<<<<<< HEAD
 4. Add any additional CRE8TAR-specific configuration details
 =======
-4. Add any additional CRE8TAR-specific configuration details
->>>>>>> 1cd5f928a78404d1dc0c6f1ebf5cce52b5e6880c
+
 
