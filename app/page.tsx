@@ -4,8 +4,12 @@ import { MotionPills } from "@/components/main/MotionPills";
 import { Projects } from "@/components/main/projects";
 import { Highlights } from "@/components/main/Highlights";
 import { Roadmap } from "@/components/main/roadmap";
-import { Mintstep } from "@/components/main/mintstep";
+import { Mintstep } from "@/components/main/Mintstep";
 import { PerksSection } from "@/components/main/Perkssection";
+import { MeetTheTeam } from "@/components/main/MeetTheTeam";
+import { FAQSection } from "@/components/main/FAQSection";
+
+
 export default function Home() {
   return (
     <main className="h-full w-full">
@@ -17,6 +21,8 @@ export default function Home() {
         <Roadmap />
         <Mintstep />
         <Encryption />
+        <MeetTheTeam />
+        <FAQSection/>
         <Projects />
 
       </div>
