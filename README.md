@@ -38,7 +38,8 @@
 
 ```
 🪐 Project Structure
-text
+
+```
 cre8tar-landing/
 ├── app/
 │   ├── layout.tsx          # Cosmic layout wrapper  
@@ -56,10 +57,10 @@ cre8tar-landing/
 └── public/
     ├── assets/             # GLTF models
     └── textures/           # Space materials
-
+```
 
 🚀 Quick Start
-bash
+
 # Clone with CRE8TAR templates
 git clone https://github.com/AbdulNasir-NuZ/landingpageC8R.git
 cd landingpageC8R
@@ -75,7 +76,7 @@ Adding New Planets
 Create GLTF model in /public/assets
 
 Add to components/cosmic/Planet.tsx:
-
+```
 tsx
 <mesh>
   <primitive object={gltf.scene} />
@@ -91,8 +92,9 @@ extend: {
     }
   }
 }
+```
 🛰 Deployment
-bash
+
 # Vercel (Recommended)
 vercel --prod --ai-runtime=edge
 
@@ -130,8 +132,7 @@ For best results:
 1. Replace the banner URL with your actual image
 2. Update analytics IDs when deploying
 3. Verify all component paths match your exact structure
-<<<<<<< HEAD
 4. Add any additional CRE8TAR-specific configuration details
-=======
+
 
 
