@@ -8,7 +8,7 @@ import { Mintstep } from "@/components/main/Mintstep";
 import { PerksSection } from "@/components/main/Perkssection";
 import { MeetTheTeam } from "@/components/main/MeetTheTeam";
 import { FAQSection } from "@/components/main/FAQSection";
-
+import { JoinClan } from "@/components/main/JoinClan";
 
 export default function Home() {
   return (
@@ -23,6 +23,7 @@ export default function Home() {
         <Encryption />
         <MeetTheTeam />
         <FAQSection/>
+        <JoinClan/>
         <Projects />
 
       </div>
