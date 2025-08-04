@@ -40,23 +40,102 @@
 🪐 Project Structure
 
 ```
-cre8tar-landing/
-├── app/
-│   ├── layout.tsx          # Cosmic layout wrapper  
-│   └── page.tsx            # Animated entry point
-├── components/
-│   ├── cosmic/             # 3D elements
-│   │   ├── StarField.tsx   # Interactive stars
-│   │   └── Planet.tsx      # Animated planets
-│   └── ui/
-│       ├── Navbar.tsx      # Stellar navigation
-│       └── ThemeToggler.tsx # Dark/light cosmos
-├── lib/
-│   ├── cosmicUtils.ts      # Space calculations
-│   └── animations.ts       # Motion presets
-└── public/
-    ├── assets/             # GLTF models
-    └── textures/           # Space materials
+.github/
+└── images/
+    ├── img1.png
+    ├── img2.png
+    ├── img3.png
+    ├── img4.png
+    ├── img_main.png
+    └── stats.svg
+
+app/
+├── apple-icon.png
+├── icon1.png
+├── icon2.png
+├── layout.tsx
+├── marketplace/
+│   └── page.tsx
+└── page.tsx
+
+components/
+├── main/
+│   ├── encryption.tsx
+│   ├── FAQSection.tsx
+│   ├── footer.tsx
+│   ├── hero.tsx
+│   ├── Highlights.tsx
+│   ├── JoinClan.tsx
+│   ├── MeetTheTeam.tsx
+│   ├── Mintstep.tsx
+│   ├── MotionPills.tsx
+│   ├── navbar.tsx
+│   ├── Perkssection.tsx
+│   ├── projects.tsx
+│   ├── roadmap.tsx
+│   ├── skills.tsx
+│   └── star-background.tsx
+├── sub/
+│   ├── hero-content.tsx
+│   ├── project-card.tsx
+│   ├── skill-data-provider.tsx
+│   └── skill-text.tsx
+
+config/
+└── index.ts
+
+constants/
+└── index.ts
+
+lib/
+├── motion.ts
+└── utils.ts
+
+public/
+├── hero-bg.svg
+├── lock-main.png
+├── lock-top.png
+├── logo.png
+├── projects/
+│   ├── project-1.png
+│   ├── project-2.png
+│   └── project-3.png
+├── skills/
+│   ├── css.png
+│   ├── docker.png
+│   ├── express.png
+│   ├── figma.png
+│   ├── firebase.png
+│   ├── framer.png
+│   ├── go.png
+│   ├── graphql.png
+│   ├── html.png
+│   ├── js.png
+│   ├── mongodb.png
+│   ├── mui.png
+│   ├── mysql.png
+│   ├── next.png
+│   ├── node.png
+│   ├── postgresql.png
+│   ├── prisma.png
+│   ├── react.png
+│   ├── reactnative.png
+│   ├── reactquery.png
+│   ├── redux.png
+│   ├── stripe.png
+│   ├── tailwind.png
+│   ├── tauri.png
+│   └── ts.png
+└── videos/
+    ├── blackhole.webm
+    ├── encryption-bg.webm
+    └── skills-bg.webm
+
+next-env.d.ts  
+next.config.js  
+postcss.config.js  
+tailwind.config.ts
+
 ```
 
 🚀 Quick Start
