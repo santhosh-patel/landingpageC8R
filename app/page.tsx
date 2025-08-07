@@ -24,7 +24,7 @@ export default function Home() {
         <MeetTheTeam />
         <FAQSection/>
         <JoinClan/>
-        <Projects />
+        {/* <Projects /> */}
 
       </div>
     </main>
