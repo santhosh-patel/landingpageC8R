@@ -10,24 +10,29 @@ export const FAQSection = () => {
   const faqs = [
     {
       question: "What is nftninja?",
-      answer: "nftninja is a collection of 5,000 unique, masked ninja NFTs living on the Ethereum blockchain. Each ninja is packed with distinct traits, rarity, and hidden utility within the ecosystem."
+      answer:
+        "nftninja is a collection of 5,000 unique, masked ninja NFTs living on the Ethereum blockchain. Each ninja is packed with distinct traits, rarity, and hidden utility within the ecosystem.",
     },
     {
       question: "How can I mint a ninja?",
-      answer: "Connect your wallet to our minting portal during the sale period. Select your desired quantity and confirm the transaction."
+      answer:
+        "Connect your wallet to our minting portal during the sale period. Select your desired quantity and confirm the transaction.",
     },
     {
       question: "Will there be a game or metaverse integration?",
-      answer: "Yes! We're developing a P2E game where your ninjas can battle, complete missions, and earn $SHADOW tokens."
+      answer:
+        "Yes! We're developing a P2E game where your ninjas can battle, complete missions, and earn $SHADOW tokens.",
     },
     {
       question: "What is $shadow and how do I earn it?",
-      answer: "$SHADOW is our utility token earned through gameplay, staking, and community participation."
+      answer:
+        "$SHADOW is our utility token earned through gameplay, staking, and community participation.",
     },
     {
       question: "What can I do with my nftninja?",
-      answer: "Use as avatars, stake for rewards, participate in governance, or trade on secondary markets."
-    }
+      answer:
+        "Use as avatars, stake for rewards, participate in governance, or trade on secondary markets.",
+    },
   ];
 
   const toggleFAQ = (index: number) => {
@@ -35,32 +40,29 @@ export const FAQSection = () => {
   };
 
   return (
-    <motion.section 
+    <motion.section
       initial="hidden"
       animate="visible"
       className="w-full px-4 py-20 sm:px-8 md:px-12 lg:px-24"
     >
       {/* Header */}
-      <motion.div 
-        variants={slideInFromTop}
-        className="text-center mb-16"
-      >
+      <motion.div variants={slideInFromTop} className="text-center mb-16">
         <h2 className="text-5xl font-bold text-white mb-2">FAQ</h2>
         <div className="flex flex-col items-center">
-          <motion.h3 
+          <motion.h3
             variants={slideInFromLeft(0.3)}
             className="text-3xl font-bold text-white mb-1"
           >
             FREQUENTLY ASKED
           </motion.h3>
-          <motion.h3 
+          <motion.h3
             variants={slideInFromLeft(0.4)}
             className="text-3xl font-bold text-white"
           >
             QUESTIONS
           </motion.h3>
         </div>
-        <motion.p 
+        <motion.p
           variants={slideInFromLeft(0.5)}
           className="text-lg text-gray-300 mt-6 max-w-2xl mx-auto"
         >
@@ -77,12 +79,13 @@ export const FAQSection = () => {
             className="overflow-hidden"
           >
             <motion.div
-              className={`p-6 rounded-xl border-2 ${activeIndex === index ? 'border-purple-400 bg-gray-900/70' : 'border-gray-600 bg-gray-900/40'} transition-all cursor-pointer`}
+              className="p-6 rounded-xl border-2 border-gray-500 cursor-pointer transition-all"
               onClick={() => toggleFAQ(index)}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               style={{
-                boxShadow: activeIndex === index ? '0 0 15px rgba(168, 85, 247, 0.5)' : 'none'
+                boxShadow: "none",
+                backgroundColor: "transparent",
               }}
             >
               <div className="flex justify-between items-center">
@@ -94,23 +97,20 @@ export const FAQSection = () => {
                   animate={{ rotate: activeIndex === index ? 45 : 0 }}
                   className="text-2xl font-bold text-white"
                 >
-                  <div className="relative">
-                    <span className="absolute inset-0 bg-white rounded-full opacity-0 group-hover:opacity-20 transition-opacity"></span>
-                    <motion.span
-                      animate={{ 
-                        scale: [1, 1.1, 1],
-                        opacity: [0.8, 1, 0.8]
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                      className="block"
-                    >
-                      +
-                    </motion.span>
-                  </div>
+                  <motion.span
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      opacity: [0.8, 1, 0.8],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="block"
+                  >
+                    +
+                  </motion.span>
                 </motion.div>
               </div>
 
@@ -118,7 +118,7 @@ export const FAQSection = () => {
                 {activeIndex === index && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
+                    animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3 }}
                     className="pt-4"

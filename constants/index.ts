@@ -6,6 +6,7 @@ import {
   RxTwitterLogo,
   RxLinkedinLogo,
 } from "react-icons/rx";
+import { MdMail } from "react-icons/md";
 
 export const SKILL_DATA = [
   {
@@ -90,19 +91,34 @@ export const SKILL_DATA = [
 
 export const SOCIALS = [
   {
-    name: "Instagram",
+    name: "instagram",
     icon: RxInstagramLogo,
     link: "https://instagram.com",
   },
   {
-    name: "Facebook",
+    name: "facebook",
     icon: FaFacebook,
     link: "https://facebook.com",
   },
   {
-    name: "Twitter",
+    name: "twitter",
     icon: RxTwitterLogo,
     link: "https://twitter.com",
+  },
+  {
+    name: "linkedin",
+    icon: RxLinkedinLogo,
+    link: "https://linkedin.com",
+  },
+  {
+    name: "discord",
+    icon: RxDiscordLogo,
+    link: "https://discord.com",
+  },
+  {
+    name: "mail",
+    icon: MdMail,
+    link: "mailto:contact@example.com",
   },
 ] as const;
 

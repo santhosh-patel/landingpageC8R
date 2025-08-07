@@ -25,7 +25,7 @@ export const HeroContent = () => {
       >
         <div className="relative w-[800px] h-[800px]">
           <Image
-            src="/hero-bg.svg"
+            src=""
             alt="Background visual"
             fill
             style={{ objectFit: "contain" }}
