@@ -1,104 +1,173 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
+import Image from "next/image";
 
-const phases = [
+const roadmapData = [
   {
-    date: "1-6 May, 2021",
-    title: "Registration",
-    description: "Pick your favourite event(s) and register in that event by filling the form corresponding to that event. Its that easy :)",
-    alignRight: true,
+    title: "LAUNCH & BENT",
+    bullets: [
+      "Welcome all 20 minutes at the celebration",
+      "Follows on an occasion, and celebrate!",
+      "Community channels welcome!",
+    ],
+    color: "from-yellow-400 to-yellow-600",
   },
   {
-    date: "6-9 May, 2021",
-    title: "Participation",
-    description: "Participate online. The links for your registered events will be sent to you via email and whatsapp groups. Use those links and show your talent.",
-    alignRight: false,
+    title: "GAME MECHANICS",
+    bullets: [
+      "Learn the rules of the ninja world",
+      "Progression system explained",
+      "Unlockable skills revealed",
+    ],
+    color: "from-green-400 to-green-600",
   },
   {
-    date: "10 May, 2021",
-    title: "Result Declaration",
-    description: "The ultimate genius will be revealed by our judging panel on 10th May, 2021 and the results will be announced on the whatsapp groups and will be mailed to you.",
-    alignRight: true,
+    title: "SHADOW TOKEN",
+    bullets: [
+      "Utility token for the community",
+      "Earnable through missions",
+      "Used for marketplace trading",
+    ],
+    color: "from-purple-400 to-purple-600",
   },
   {
-    date: "12 May, 2021",
-    title: "Prize Distribution",
-    description: "The winners will be contacted by our team for their addresses and the winning goodies will be sent at their addresses.",
-    alignRight: false,
+    title: "LORE EXPANSION",
+    bullets: [
+      "New chapters added monthly",
+      "Backstory deep dives",
+      "Community voting on plot twists",
+    ],
+    color: "from-blue-400 to-blue-600",
+  },
+  {
+    title: "METAVERSE ENTRY",
+    bullets: [
+      "Virtual dojo integration",
+      "Playable avatars in VR",
+      "Interconnected metaverse hubs",
+    ],
+    color: "from-pink-400 to-pink-600",
   },
 ];
 
 export const Roadmap = () => {
+  const lineRef = useRef(null);
+  const isInView = useInView(lineRef, { once: true });
+  const lineControls = useAnimation();
+
+  React.useEffect(() => {
+    if (isInView) {
+      lineControls.start({ scaleY: 1, transition: { duration: 1.2 } });
+    }
+  }, [isInView, lineControls]);
+
   return (
-    <section className="py-12">
-      {/* Page heading */}
+    <section className="py-16 bg-transparent">
+      {/* Header */}
       <div className="text-center mb-12 px-6">
-        <h1 className="text-5xl font-extrabold mb-4 text-white">Product Roadmap</h1>
-        <p className="text-white max-w-2xl mx-auto">
-          Here's your guide to the phases of our project, outlining key milestones and deliverables.
+         <h3 className="text-1xl font-extrabold mb-4 text-white uppercase">
+          ROADMAP
+        </h3>
+        <h1 className="text-5xl font-extrabold mb-4 text-white uppercase">
+          THE PATH OF CRE8TAR
+        </h1>
+        <p className="text-gray-300 max-w-2xl mx-auto">
+          A weekly workshop organized by our community, guiding you through each
+          phase of our ninja journey.
         </p>
       </div>
 
-      {/* Main content */}
-      <div className="text-white">
-        <div className="container mx-auto flex flex-col items-start md:flex-row">
-          {/* Left info panel */}
-          <div className="flex flex-col w-full md:w-1/3 mt-2 md:mt-12 px-8">
-            <p className="ml-2 text-yellow-300 uppercase tracking-loose">Working Process</p>
-            <p className="text-3xl md:text-4xl leading-normal md:leading-relaxed mb-2 text-white">
-              Working Process of Fest
-            </p>
-            <p className="text-sm md:text-base text-gray-300 mb-4">
-              Here's your guide to the tech fest 2021 process. Go through all the steps to know the exact process of the fest.
-            </p>
-            <a
-              href="#"
-              className="bg-transparent mr-auto hover:bg-yellow-300 text-yellow-300 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent"
-            >
-              Explore Now
-            </a>
-          </div>
+      {/* Timeline Path */}
+      <div className="relative w-full max-w-5xl mx-auto min-h-[700px]">
+        {/* Vertical line */}
+        <motion.div
+          ref={lineRef}
+          className="absolute top-0 h-full w-3 bg-gray-400 rounded-full origin-top left-1/2 -translate-x-1/2 z-0"
+          initial={{ scaleY: 0 }}
+          animate={lineControls}
+        />
 
-          {/* Timeline */}
-          <div className="ml-0 md:ml-12 w-full md:w-2/3">
-            <div className="container mx-auto w-full h-full">
-              <div className="relative wrap overflow-hidden p-10 h-full">
-                {/* Vertical timeline lines */}
-                <div
-                  className="absolute h-full border border-yellow-400"
-                  style={{ right: "50%", borderRadius: "1%" }}
-                />
-                <div
-                  className="absolute h-full border border-yellow-400"
-                  style={{ left: "50%", borderRadius: "1%" }}
-                />
+        <div className="flex flex-col space-y-20 relative z-10">
+          {roadmapData.map((phase, idx) => {
+            const isLeft = idx % 2 === 0;
 
-                {/* Timeline items */}
-                {phases.map(({ date, title, description, alignRight }, i) => (
-                  <div
-                    key={i}
-                    className={`mb-8 flex justify-between items-center w-full ${
-                      alignRight ? "flex-row-reverse" : ""
+            return (
+              <div
+                key={idx}
+                className={`flex items-center w-full justify-${
+                  isLeft ? "start" : "end"
+                } relative`}
+                style={{ position: "relative" }}
+              >
+                {/* Coin */}
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 * idx }}
+                  viewport={{ once: true }}
+                  className="flex flex-col items-center absolute top-1/2 z-20 w-20 h-20"
+                  style={{
+                    top:"25%",
+                    left: "47%", // move slightly left; change this value to your liking
+                    transform: "translate(-50%, -50%)",
+                  }}
+                >
+                  <Image
+                    src="/c8coin.png"
+                    alt={`Coin ${idx + 1}`}
+                    width={80}
+                    height={80}
+                    className="object-contain"
+                  />
+                  <span
+                    style={{
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      color: "white",
+                      fontWeight: "bold",
+                      fontSize: "20px",
+                      pointerEvents: "none",
+                      userSelect: "none",
+                    }}
+                  >
+                    {idx + 1}
+                  </span>
+                </motion.div>
+
+                {/* Card */}
+                <motion.div
+                  initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 * idx + 0.3 }}
+                  viewport={{ once: true }}
+                  className={`w-5/12 p-6 bg-transparent rounded-lg shadow-none ${
+                    isLeft ? "ml-8 text-left" : "mr-8 text-right"
+                  }`}
+                  style={{ maxWidth: "480px", zIndex: 10 }}
+                >
+                  <h2
+                    className="text-xl font-bold uppercase mb-3 text-white"
+                    style={{ whiteSpace: "nowrap" }}
+                  >
+                    {phase.title}
+                  </h2>
+                  <ul
+                    className={`space-y-2 text-gray-300 text-sm ${
+                      isLeft ? "text-left" : "text-right"
                     }`}
                   >
-                    <div className="order-1 w-5/12" />
-                    <div
-                      className={`order-1 w-5/12 px-1 py-4 ${
-                        alignRight ? "text-right" : "text-left"
-                      }`}
-                    >
-                      <p className="mb-3 text-base text-yellow-300">{date}</p>
-                      <h4 className="mb-3 font-bold text-lg md:text-2xl text-white">{title}</h4>
-                      <p className="text-sm md:text-base leading-snug text-gray-300">
-                        {description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                    {phase.bullets.map((bullet, i) => (
+                      <li key={i}>• {bullet}</li>
+                    ))}
+                  </ul>
+                </motion.div>
               </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>
