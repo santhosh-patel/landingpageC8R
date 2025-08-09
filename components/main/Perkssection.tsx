@@ -1,71 +1,93 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const benefits = [
   {
-    title: "COLLECTIBLE AND UNIQUE NINJAS",
-    description: "Every table and all side – cloth tools to create a fresh, clean, weapon available.",
+    title: "COLLECTIBLE & UNIQUE NINJAS",
+    description:
+      "Each ninja is uniquely crafted with rare traits and powerful hidden abilities.",
     icon: "🎭",
   },
   {
-    title: "STAKING AND S SHADOW REWARDS",
-    description: "Every table and all side – cloths will be made of thin, clean, weapons available.",
+    title: "STAKING & SHADOW REWARDS",
+    description:
+      "Stake your ninjas to earn exclusive SHADOW tokens and unlock special perks.",
     icon: "💰",
   },
   {
-    title: "COMMUNITY POWERED DAD",
-    description: "The user goes on the first manual to call special access you can do.",
+    title: "COMMUNITY POWER",
+    description:
+      "Join a strong community that supports and grows together with exclusive access.",
     icon: "👨‍👧‍👦",
   },
   {
-    title: "READY TO JOIN THE CLARY",
-    description: "See your favorite work in this part of the business to meet the clarity panel at Main University.",
+    title: "READY TO JOIN THE CLAW?",
+    description:
+      "Become part of the clan and shape the future of CRE8TAR ninjas with us.",
     icon: "🚀",
   },
 ];
 
-export const PerksSection = () => {
-  return (
-    <section className="py-16 ">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header section */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl">
-            UNLOCK THE PERKS
-          </h2>
-          <p className="mt-4 text-xl text-gray-600">
-            A simple model is required to be automatically offer and long-term links to the
-          </p>
-        </div>
+const cardHeights = [260, 400, 420, 280];
 
-        {/* Benefits grid */}
-        <div className="mt-10">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {benefits.map((benefit, index) => (
-              <div
-                key={`benefit-${index}`}
-                className=" p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100"
+export const PerksSection = () => {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  return (
+    <section className="py-16 bg-transparent" ref={containerRef}>
+      {/* Header */}
+      <div className="w-full max-w-full text-center px-8 mb-10">
+        <h2 className="text-4xl font-extrabold text-white uppercase">UNLOCK THE PERKS</h2>
+        <p className="text-gray-300 mt-2 max-w-xl mx-auto">
+          Discover the unique features and benefits available to CRE8TAR ninja holders.
+        </p>
+      </div>
+
+      {/* Grid */}
+      <div className="mx-auto px-8" style={{ maxWidth: 1200 }}>
+        <div
+          className="card-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: 24,
+            alignItems: "start",
+          }}
+        >
+          {benefits.map((benefit, idx) => {
+            const height = cardHeights[idx];
+            const extraStyle = idx === 2 ? { marginTop: "-140px" } : {};
+
+            return (
+              <motion.div
+                key={idx}
+                className="flex flex-col items-center p-5 rounded-lg shadow-md bg-gray-800 bg-opacity-80"
+                style={{ height, ...extraStyle }}
+                initial={{ opacity: 0, y: 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: idx * 0.3, duration: 0.6, ease: "easeOut" }}
+                whileHover={{ scale: 1.05 }}
               >
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-100 text-blue-600 text-xl mb-4">
-                  {benefit.icon}
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 uppercase tracking-tight">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <div className="text-3xl mb-4">{benefit.icon}</div>
+                <h3 className="text-xl font-semibold text-white mb-2 uppercase text-center">{benefit.title}</h3>
+                <p className="text-gray-400 text-center text-base leading-relaxed max-w-xs mb-4">
                   {benefit.description}
                 </p>
-              </div>
-            ))}
-          </div>
-        </div>
 
-        {/* CTA section */}
-        <div className="mt-16 text-center">
-          <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-            Join Now
-          </button>
+                {(idx === 0 || idx === benefits.length - 1) && (
+                  <button
+                    onClick={() => window.open("https://www.youtube.com", "_blank")}
+                    className="mx-auto w-[200px] py-3 rounded-md bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors duration-300"
+                  >
+                    Visit YouTube
+                  </button>
+                )}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

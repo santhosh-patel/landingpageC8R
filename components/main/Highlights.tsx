@@ -1,73 +1,113 @@
 "use client";
 
-import Image from "next/image";
+import { useState } from "react";
+import { TbH2 } from "react-icons/tb";
+
+type FlipCardProps = {
+  frontImageSrc: string;
+  frontImageAlt: string;
+  backContent: React.ReactNode;
+};
+
+const FlipCard = ({ frontImageSrc, frontImageAlt, backContent }: FlipCardProps) => {
+  const [flipped, setFlipped] = useState(false);
+  const radius = 12;
+
+  return (
+    <div
+      className="relative w-64 h-80 cursor-pointer"
+      onMouseEnter={() => setFlipped(true)}
+      onMouseLeave={() => setFlipped(false)}
+      style={{ perspective: 1000 }}
+    >
+      <div
+        className="relative w-full h-full shadow-lg"
+        style={{
+          borderRadius: radius,
+          transition: "transform 1.5s ease",
+          transformStyle: "preserve-3d",
+          transformOrigin: "center",
+          transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
+          position: "relative",
+          backgroundColor: "rgba(0,0,0,0.7)",
+        }}
+      >
+        {/* Front side */}
+        <div
+          className="absolute top-0 left-0 w-full h-full rounded-lg overflow-hidden"
+          style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+        >
+          <img
+            src={frontImageSrc}
+            alt={frontImageAlt}
+            style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: radius }}
+          />
+        </div>
+
+        {/* Back side */}
+        <div
+          className="absolute top-0 left-0 w-full h-full rounded-lg flex flex-col justify-center items-center p-6 bg-black bg-opacity-80 text-white select-none"
+          style={{
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
+            borderRadius: radius,
+          }}
+        >
+          {backContent}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export const Highlights = () => {
   return (
-    <main className="min-h-screen w-full px-6 py-16 flex flex-col items-center text-white">
-      {/* Heading */}
-      <h1 className="text-6xl font-extrabold mb-4 text-center">Warning Marker Design</h1>
-      <p className="text-lg text-gray-300 text-center max-w-3xl mb-16">
-        An advanced monument to mark radioactive zones using intuitive geometry, cultural symbols, and detectable materials.
+    <main className="min-h-screen flex flex-col items-center justify-center bg-transparent px-8 py-12 text-white">
+      <h3 className="text-2xl font-bold mb-12 uppercase text-center max-w-3xl">ABOUT CRE8TAR</h3>
+      <h1 className="text-4xl font-bold mb-12 uppercase text-center max-w-3xl">
+         Unique Avatars Rare traits 
+        <br />
+      true ownership
+      </h1>
+
+      <div className="flex flex-wrap justify-center gap-12">
+        <FlipCard
+          frontImageSrc="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=256&q=80"
+          frontImageAlt="Avatar 1"
+          backContent={
+            <>
+              <h3 className="text-xl font-semibold mb-2">Avatar 1 Details</h3>
+              <p>Rare traits and unique design make this avatar stand out.</p>
+            </>
+          }
+        />
+        <FlipCard
+          frontImageSrc="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&w=256&q=80"
+          frontImageAlt="Avatar 2"
+          backContent={
+            <>
+              <h3 className="text-xl font-semibold mb-2">Avatar 2 Details</h3>
+              <p>Crafted for true ownership with exclusive features.</p>
+            </>
+          }
+        />
+        <FlipCard
+          frontImageSrc="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=256&q=80"
+          frontImageAlt="Avatar 3"
+          backContent={
+            <>
+              <h3 className="text-xl font-semibold mb-2">Avatar 3 Details</h3>
+              <p>Limited edition with rare visual elements.</p>
+            </>
+          }
+        />
+      </div>
+
+      <p className="max-w-3xl text-center mt-16 text-lg leading-relaxed bg-transparent">
+        CRE8TAR offers unique avatars with rare traits and true ownership.<br/>
+       Designed with detail and backed by exclusive technology.
       </p>
-
-      <section className="flex flex-col-reverse md:flex-row items-center gap-16 max-w-7xl w-full">
-        {/* Left: Descriptions */}
-        <div className="md:w-1/2 space-y-8 text-left">
-          <div>
-            <h2 className="text-2xl font-semibold mb-2">Rhombic Dodecahedron</h2>
-            <p className="text-gray-400">
-              The shape balances a sphere’s stability with flat surfaces and spiked edges to deter climbing.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-semibold mb-2">Laser-Etched Skull</h2>
-            <p className="text-gray-400">
-              Deep laser engraving creates millions of light-reflecting bubbles, resembling a cat’s eyes — universally signaling danger and death.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-semibold mb-2">Embedded Warning Signs</h2>
-            <p className="text-gray-400">
-              Symbols are etched directly into the surface and embedded in-ground, acting as a barrier to vehicles and humans.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-semibold mb-2">Connector & Foundation</h2>
-            <p className="text-gray-400">
-              A corrosion-resistant alloy rod and magnetic base anchor the unit to the foundation — detectable by magnetometers.
-            </p>
-          </div>
-        </div>
-
-        {/* Right: Image with polished frame + rotation */}
-        <div className="md:w-1/2 flex justify-center relative">
-          <div
-            className="rounded-xl overflow-hidden"
-            style={{
-              width: "320px",
-              height: "320px",
-              transform: "rotate(45deg)",
-              boxShadow: "0 0 15px 4px rgba(150, 100, 255, 0.4), inset 0 0 20px rgba(150, 100, 255, 0.2)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-            }}
-          >
-            <Image
-              src="/653e9eec853aded9208472863b1181ce.jpg"
-              alt="Rhombic Dodecahedron Marker"
-              width={320}
-              height={320}
-              className="object-cover w-full h-full"
-            />
-          </div>
-          <div className="absolute bottom-[-20px] text-sm text-gray-500 text-center w-full">
-            Laser-etched skull in center
-          </div>
-        </div>
-      </section>
     </main>
   );
 };
