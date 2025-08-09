@@ -43,10 +43,14 @@ export const FAQSection = () => {
     <motion.section
       initial="hidden"
       animate="visible"
-      className="w-full px-4 py-20 sm:px-8 md:px-12 lg:px-24"
+      className="w-full px-4 pt-12 pb-20 sm:px-8 md:px-12 lg:px-24 overflow-visible"
+      style={{
+        background: "inherit",
+        marginTop: 0,
+      }}
     >
       {/* Header */}
-      <motion.div variants={slideInFromTop} className="text-center mb-16">
+      <motion.div variants={slideInFromTop} className="text-center mt-12 mb-16">
         <h2 className="text-5xl font-bold text-white mb-2">FAQ</h2>
         <div className="flex flex-col items-center">
           <motion.h3
@@ -71,15 +75,15 @@ export const FAQSection = () => {
       </motion.div>
 
       {/* FAQ Items */}
-      <div className="max-w-4xl mx-auto space-y-4">
+      <div className="max-w-4xl mx-auto space-y-4 overflow-visible">
         {faqs.map((faq, index) => (
           <motion.div
             key={index}
             variants={slideInFromLeft(0.3 + index * 0.1)}
-            className="overflow-hidden"
+            className="overflow-visible"
           >
             <motion.div
-              className="p-6 rounded-xl border-2 border-gray-500 cursor-pointer transition-all"
+              className="p-6 rounded-xl border-2 border-gray-500 cursor-pointer transition-all overflow-visible"
               onClick={() => toggleFAQ(index)}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
