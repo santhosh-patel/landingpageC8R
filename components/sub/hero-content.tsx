@@ -3,7 +3,6 @@
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 
 import {
   slideInFromLeft,
@@ -16,7 +15,7 @@ export const HeroContent = () => {
     <motion.div
       initial="hidden"
       animate="visible"
-      className="relative w-full px-5 mt-40 z-[20] flex justify-center"
+      className="relative w-full px-5 mt-40 z-[20] flex flex-col items-center"
     >
       {/* Background Image */}
       <motion.div
@@ -81,24 +80,15 @@ export const HeroContent = () => {
           >
             Check Demo
           </motion.a>
-
-          {/* <Link href="/marketplace" passHref>
-            <motion.a
-              variants={slideInFromLeft(2.2)}
-              className="py-2 px-12 button-primary text-center text-white cursor-pointer rounded-lg flex items-center justify-center"
-            >
-              Visit MarketPlace
-            </motion.a>
-          </Link> */}
         </div>
       </div>
 
-      {/* Join Waitlist Section - Bottom Left */}
+      {/* Join Waitlist Section - Centered at Bottom */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2.5 }}
-        className="absolute bottom-6 left-4 bg-opacity-90 backdrop-blur-md rounded-full px-4 py-2 flex items-center space-x-2 max-w-[320px] w-full"
+        className="mt-16 bg-opacity-90 backdrop-blur-md rounded-full px-1 py-1 flex items-center space-x-2 w-full max-w-[400px] z-10"
       >
         <label htmlFor="waitlist-email" className="sr-only">
           Email address

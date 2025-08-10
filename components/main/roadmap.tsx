@@ -67,7 +67,7 @@ export const Roadmap = () => {
     <section className="py-16 bg-transparent">
       {/* Header */}
       <div className="text-center mb-12 px-6">
-         <h3 className="text-1xl font-extrabold mb-4 text-white uppercase">
+        <h3 className="text-1xl font-extrabold mb-4 text-white uppercase">
           ROADMAP
         </h3>
         <h1 className="text-5xl font-extrabold mb-4 text-white uppercase">
@@ -109,8 +109,8 @@ export const Roadmap = () => {
                   viewport={{ once: true }}
                   className="flex flex-col items-center absolute top-1/2 z-20 w-20 h-20"
                   style={{
-                    top:"25%",
-                    left: "47%", // move slightly left; change this value to your liking
+                    top: "25%",
+                    left: "47%",
                     transform: "translate(-50%, -50%)",
                   }}
                 >
@@ -144,22 +144,32 @@ export const Roadmap = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 * idx + 0.3 }}
                   viewport={{ once: true }}
-                  className={`w-5/12 p-6 bg-transparent rounded-lg shadow-none ${
-                    isLeft ? "ml-8 text-left" : "mr-8 text-right"
-                  }`}
-                  style={{ maxWidth: "480px", zIndex: 10 }}
+                  className={`w-5/12 p-6 bg-transparent rounded-lg shadow-none text-left`}
+                  style={{
+                    maxWidth: "480px",
+                    zIndex: 10,
+                    marginLeft:
+                      !isLeft && (idx === 1 || idx === 3)
+                        ? "750px"     //card 2,4 adjusted to align with the line
+                        : isLeft
+                        ? "0"
+                        : "auto",
+                    marginRight:
+                      !isLeft && (idx === 1 || idx === 3)
+                        ? "auto"
+                        : isLeft
+                        ? "auto"
+                        : "0",
+                  }}
                 >
                   <h2
                     className="text-xl font-bold uppercase mb-3 text-white"
-                    style={{ whiteSpace: "nowrap" }}
+                    style={{ whiteSpace: "nowrap", textAlign: "left" }}
                   >
                     {phase.title}
                   </h2>
-                  <ul
-                    className={`space-y-2 text-gray-300 text-sm ${
-                      isLeft ? "text-left" : "text-right"
-                    }`}
-                  >
+
+                  <ul className="space-y-2 text-gray-300 text-sm text-left">
                     {phase.bullets.map((bullet, i) => (
                       <li key={i}>• {bullet}</li>
                     ))}
