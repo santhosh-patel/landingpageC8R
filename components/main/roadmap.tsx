@@ -146,7 +146,7 @@ export const Roadmap = () => {
                   viewport={{ once: true }}
                   className={`w-5/12 p-6 bg-transparent rounded-lg shadow-none text-left`}
                   style={{
-                    maxWidth: "480px",
+                    maxWidth: "720px",
                     zIndex: 10,
                     marginLeft:
                       !isLeft && (idx === 1 || idx === 3)
